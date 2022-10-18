@@ -1,0 +1,9 @@
+dependencies:
+  - papermill
+  - python
+  - jupyter
+  - geopandas
+  - pandas
+  - numpy
+  - scipy
+  - tqdm
