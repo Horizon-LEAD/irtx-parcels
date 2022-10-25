@@ -1,11 +1,9 @@
 # IRTX Synthetic parcel model
 
 ## TODO
-- Clean environment.yml
 - Provide static input to INLECOM (so no need to run upstream models for testing)
 - Test that all of this works smoothly with the provided data
 - Generate the standard cases for downstream testing
-- Add JSON
 
 ## Introduction
 
@@ -112,6 +110,8 @@ The scaling factor could also be an input to create multiple different scenarios
 **Baseline demand 2022**
 
 ```
+-pinput_path /path/to/irtx-synpop-output \
+-poutput_path /path/to/output \
 -pinput_prefix lead_2022_100pct_ \
 -poutput_prefix lead_2022_ \
 -pscaling 1.0
@@ -119,6 +119,8 @@ The scaling factor could also be an input to create multiple different scenarios
 **Future demand 2030**
 
 ```
+-pinput_path /path/to/irtx-synpop-output \
+-poutput_path /path/to/output \
 -pinput_prefix lead_2030_100pct_ \
 -poutput_prefix lead_2030_ \
 -pscaling 2.0

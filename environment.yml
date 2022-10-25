@@ -1,9 +1,12 @@
+channels:
+  - defaults
+
 dependencies:
-  - papermill
-  - python
-  - jupyter
-  - geopandas
-  - pandas
-  - numpy
-  - scipy
-  - tqdm
+  - papermill==2.3.3
+  - python=3.8.12
+  - jupyter=1.0.0
+  - geopandas==0.9.0
+  - pandas=1.2.5
+  - numpy=1.20.2
+  - scipy=1.6.2
+  - tqdm=4.61.1
