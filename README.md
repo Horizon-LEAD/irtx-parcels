@@ -1,8 +1,8 @@
 # IRTX Synthetic parcel model
 
 ## TODO
+
 - Provide static input to INLECOM (so no need to run upstream models for testing)
-- Test that all of this works smoothly with the provided data
 - Generate the standard cases for downstream testing
 
 ## Introduction
@@ -30,7 +30,11 @@ and case study for last-mile deliveries in Lyon. Paper accepted for presentation
 
 The model is packaged as a `Jupyter` notebook. All dependencies to run the model
 have been collected in a `conda` environment, which is available in the LEAD
-repository as `environment.yml`.
+repository as `environment.yml`:
+
+```bash
+conda env create -n parcels -f environment.yml
+```
 
 ### Input / Output
 
@@ -62,13 +66,13 @@ Assuming that `/path/to/output` has been defined as the output path of the model
 
 To run the model, the `conda` environment needs to be prepared and entered. After,
 the model is packaged as a `jupyter` notebook which can be run programmatically
-using `papermill`, which is part of the environment dependencies. Inlcuding the
+using `papermill`, which is part of the environment dependencies. Including the
 full set of command line options, the model can be run as follows:
 
 ```bash
 papermill "Generate Parcels.ipynb" /dev/null \
-  -pinput_path /path/to/input \
-  -poutput_path /path/to/output \
+  -pinput_path /home/ubuntu/parcels/input \
+  -poutput_path /home/ubuntu/parcels/input \
   -pinput_prefix lead_ \
   -poutput_prefix lead_ \
   -prandom_seed 0 \
