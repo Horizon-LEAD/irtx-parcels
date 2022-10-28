@@ -1,10 +1,5 @@
 # IRTX Synthetic parcel model
 
-## TODO
-
-- Provide static input to INLECOM (so no need to run upstream models for testing)
-- Generate the standard cases for downstream testing
-
 ## Introduction
 
 The present model uses a synthetic population to generate the daily parcel
