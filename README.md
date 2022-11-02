@@ -37,12 +37,12 @@ conda env create -n parcels -f environment.yml
 
 To run the model, a synthetic population (for instance, as created by the IRTX
 population synthesis model), needs to be located in an arbitrary directory denoted
-by `/path/to/input`. The structure of this directory should look as follows:
+by `/irtx-synpop/output`. The structure of this directory should look as follows:
 
 ```
-/path/to/input/lead_homes.gpkg
-/path/to/input/lead_persons.csv
-/path/to/input/lead_activities.csv
+/irtx-synpop/output/lead_homes.gpkg
+/irtx-synpop/output/lead_persons.csv
+/irtx-synpop/output/lead_activities.csv
 ```
 
 #### Output
@@ -54,8 +54,8 @@ with at least one parcel that has been generated for the synthetic day:
 - Number of parcels to be delivered
 - Identifier of the household to link back to the synthetic population
 
-Assuming that `/path/to/output` has been defined as the output path of the model
-(see below), the resulting file will be created as `/path/to/output/lead_parcels.gpkg`.
+Assuming that `/irtx-parcels/output` has been defined as the output path of the model
+(see below), the resulting file will be created as `/irtx-parcels/output/lead_parcels.gpkg`.
 
 ## Running the model
 
@@ -66,8 +66,8 @@ full set of command line options, the model can be run as follows:
 
 ```bash
 papermill "Generate Parcels.ipynb" /dev/null \
-  -pinput_path /home/ubuntu/parcels/input \
-  -poutput_path /home/ubuntu/parcels/input \
+  -pinput_path /irtx-synpop/output \
+  -poutput_path /irtx-parcels/output \
   -pinput_prefix lead_ \
   -poutput_prefix lead_ \
   -prandom_seed 0 \
