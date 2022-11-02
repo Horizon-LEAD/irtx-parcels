@@ -57,7 +57,7 @@ with at least one parcel that has been generated for the synthetic day:
 Assuming that `/path/to/output` has been defined as the output path of the model
 (see below), the resulting file will be created as `/path/to/output/lead_parcels.gpkg`.
 
-# Running the model
+## Running the model
 
 To run the model, the `conda` environment needs to be prepared and entered. After,
 the model is packaged as a `jupyter` notebook which can be run programmatically
@@ -109,8 +109,8 @@ The scaling factor could also be an input to create multiple different scenarios
 **Baseline demand 2022**
 
 ```
--pinput_path /path/to/irtx-synpop-output \
--poutput_path /path/to/output \
+-pinput_path /irtx-synpop/output \
+-poutput_path output \
 -pinput_prefix lead_2022_100pct_ \
 -poutput_prefix lead_2022_ \
 -pscaling 1.0
@@ -118,8 +118,8 @@ The scaling factor could also be an input to create multiple different scenarios
 **Future demand 2030**
 
 ```
--pinput_path /path/to/irtx-synpop-output \
--poutput_path /path/to/output \
+-pinput_path /irtx-synpop/output \
+-poutput_path output \
 -pinput_prefix lead_2030_100pct_ \
 -poutput_prefix lead_2030_ \
 -pscaling 2.0
