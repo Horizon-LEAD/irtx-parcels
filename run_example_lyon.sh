@@ -1,5 +1,12 @@
 set -e
 
+## Prepare
+cd /home/ubuntu/irtx-parcels
+mkdir /home/ubuntu/irtx-parcels/output
+
+## Create environment
+conda env create -f environment.yml -n parcels
+
 ## Activate environment
 conda activate parcels
 
