@@ -1,0 +1,118 @@
+{
+    "name": "IRTX Parcel Generation",
+    "description":"The model generates a synthetic parcel demand data set based on a synthetic population",
+    "version": "1.0.0",
+    "status":"draft",
+    "types": [
+        {"name": "Demand", "description":"???"}
+    ],
+    "dockerImage":"???",
+    "url": "https://github.com/Horizon-LEAD/irtx-parcels",
+    "modelData":  [
+        {
+            "name": "Persons",
+            "variableName": "FIN_PERSONS",
+            "description": "file for persons",
+            "isOutput": false,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "file",
+                "dataType": "file",
+                "extension": "csv"
+            }
+        },
+        {
+            "name": "Homes",
+            "variableName": "FIN_HOMES",
+            "description": "file for persons",
+            "isOutput": false,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "file",
+                "dataType": "file",
+                "extension": "gpkg"
+            }
+        },
+        {
+            "name": "Random Seed",
+            "variableName": "SEED",
+            "description": "Random seed to use",
+            "isOutput": false,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "number",
+                "description": "",
+                "dataType": "number",
+                "extension": null,
+                "validators": [
+                    {
+                        "name": "required",
+                        "description": "required",
+                        "validatorType": "required",
+                        "value": ""
+                    }
+                ],
+                "objectKeys": []
+            }
+        },
+        {
+            "name": "Demand scaling factor",
+            "variableName": "SCALING",
+            "description": "Allows to uniformly scale up or down the total parcel demand",
+            "isOutput": false,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "number",
+                "description": "",
+                "dataType": "number",
+                "extension": null,
+                "validators": [
+                    {
+                        "name": "required",
+                        "description": "required",
+                        "validatorType": "required",
+                        "value": ""
+                    }
+                ],
+                "objectKeys": []
+            }
+        },
+        {
+            "name": "Output directory",
+            "variableName": "output_path",
+            "description": "Path to the directory that will contain the model output (must exist)",
+            "isOutput": true,
+            "isOutputDir": true,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "string",
+                "description": "",
+                "dataType": "string",
+                "extension": null,
+                "validators": [
+                    {
+                        "name": "required",
+                        "description": "required",
+                        "validatorType": "required",
+                        "value": ""
+                    }
+                ],
+                "objectKeys": []
+            }
+        }
+    ]
+}
