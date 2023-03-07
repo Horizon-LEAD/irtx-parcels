@@ -20,11 +20,11 @@ function show_help () {
     echo -e "${BOLD}eentrypoint.sh${NORM}: Runs the Parcels Model"\\n
     show_usage
     echo -e "\n${BOLD}Required arguments:${NORM}"
-    echo -e "${REV}FIN_PERSONS${NORM}\t the InfluxDB container name"
-    echo -e "${REV}FIN_HOMES${NORM}\t the InfluxDB dump directory"
-    echo -e "${REV}SEED${NORM}\t the InfluxDB dump directory"
-    echo -e "${REV}SCALING${NORM}\t the InfluxDB dump directory"
-    echo -e "${REV}OUT_PATH${NORM}\t the InfluxDB dump directory"\\n
+    echo -e "${REV}FIN_PERSONS${NORM}\t the persons csv input file"
+    echo -e "${REV}FIN_HOMES${NORM}\t the homes gpkg input file"
+    echo -e "${REV}SEED${NORM}\t the random seed"
+    echo -e "${REV}SCALING${NORM}\t the scaling factor"
+    echo -e "${REV}OUT_PATH${NORM}\t the output path"\\n
     echo -e "${BOLD}Optional arguments:${NORM}"
     echo -e "${REV}-v${NORM}\tSets verbosity level"
     echo -e "${REV}-h${NORM}\tShows this message"
@@ -79,8 +79,8 @@ fi
 # Execution                                                                  #
 ##############################################################################
 papermill /srv/app/src/generate-parcels.ipynb /dev/null \
-    ${FIN_PERSONS} \
-    ${FIN_HOMES} \
-    ${SEED} \
-    ${SCALING} \
-    ${OUT_PATH}
+    -pfin_persons ${FIN_PERSONS} \
+    -pfin_homes ${FIN_HOMES} \
+    -pseed ${SEED} \
+    -pscaling ${SCALING} \
+    -poutput_path ${OUT_PATH}
