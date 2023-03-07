@@ -9,6 +9,8 @@ COPY requirements.txt  /srv/app/
 RUN pip install --upgrade pip && \
     pip install -r /srv/app/requirements.txt
 
+ENV TERM=xterm
+
 COPY src /srv/app/src
 
-ENTRYPOINT [ "/srv/app/src/entrypoint.sh" ]
+ENTRYPOINT [ "/srv/app/src/entrypoint.sh", "-v" ]
