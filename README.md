@@ -124,3 +124,24 @@ The scaling factor could also be an input to create multiple different scenarios
 -poutput_prefix lead_2030_ \
 -pscaling 2.0
 ```
+
+## Installation
+
+```
+docker build -t parcels-irtx:latest .
+```
+
+## Usage
+
+### Examples
+
+```
+docker run --rm \
+  -v ./sample-data:/data \
+  parcels-irtx:latest \
+  /data/input/persons.csv \
+  /data/input/homes.gpkg \
+  1234 \
+  0.01 \
+  /data/output
+```
