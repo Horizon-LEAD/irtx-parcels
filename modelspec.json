@@ -3,9 +3,6 @@
     "description":"The model generates a synthetic parcel demand data set based on a synthetic population",
     "version": "1.0.0",
     "status":"draft",
-    "types": [
-        {"name": "Demand", "description":"???"}
-    ],
     "dockerImage":"registry.gitlab.com/inlecom/lead/models/parcels-irtx:latest",
     "url": "https://github.com/Horizon-LEAD/irtx-parcels",
     "modelData":  [
@@ -93,7 +90,7 @@
             "name": "Output directory",
             "variableName": "output_path",
             "description": "Path to the directory that will contain the model output (must exist)",
-            "isOutput": true,
+            "isOutput": false,
             "isOutputDir": true,
             "isOptional": false,
             "inputType": "CLI",
@@ -112,6 +109,21 @@
                     }
                 ],
                 "objectKeys": []
+            }
+        },
+        {
+            "name": "Parcels",
+            "variableName": "parcels",
+            "description": "file for the output parcels",
+            "isOutput": true,
+            "isOutputDir": false,
+            "isOptional": false,
+            "inputType": "CLI",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "file",
+                "dataType": "file",
+                "extension": "gpkg"
             }
         }
     ]
