@@ -1,35 +1,28 @@
 #!/bin/bash
 
-
 #Set fonts
 NORM=`tput sgr0`
 BOLD=`tput bold`
 REV=`tput smso`
 
+curdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 function show_usage () {
-    echo -e "${BOLD}Basic usage:${NORM} entrypoint.sh [-vh] FIN_PERSONS FIN_HOMES SEED SCALING OUT_PATH"
+    echo -e "${BOLD}Basic usage:${NORM} entrypoint.sh [-vh] PERSONS HOMES OUT_PATH"
 }
 
-FIN_PERSONS=${leftovers[0]}
-FIN_HOMES=${leftovers[1]}
-SEED=${leftovers[2]}
-SCALING=${leftovers[3]}
-OUT_PATH=${leftovers[4]}
-
 function show_help () {
-    echo -e "${BOLD}eentrypoint.sh${NORM}: Runs the Parcels Model"\\n
+    echo -e "${BOLD}entrypoint.sh${NORM}: Runs the Parcels Model"\\n
     show_usage
     echo -e "\n${BOLD}Required arguments:${NORM}"
-    echo -e "${REV}FIN_PERSONS${NORM}\t the persons csv input file"
-    echo -e "${REV}FIN_HOMES${NORM}\t the homes gpkg input file"
-    echo -e "${REV}SEED${NORM}\t the random seed"
-    echo -e "${REV}SCALING${NORM}\t the scaling factor"
+    echo -e "${REV}PERSONS${NORM}\t the persons csv input file"
+    echo -e "${REV}HOMES${NORM}\t the homes gpkg input file"
     echo -e "${REV}OUT_PATH${NORM}\t the output path"\\n
     echo -e "${BOLD}Optional arguments:${NORM}"
     echo -e "${REV}-v${NORM}\tSets verbosity level"
     echo -e "${REV}-h${NORM}\tShows this message"
     echo -e "${BOLD}Examples:${NORM}"
-    echo -e "entrypoint.sh -v persons.xlsx homes.gpkg 1234 0.1 ./output/"
+    echo -e "entrypoint.sh -v ./sample-data/input/persons.csv ./sample-data/input/homes.gpkg ./sample-data/output/"
 }
 
 ##############################################################################
@@ -62,25 +55,30 @@ done
 shift "$(($OPTIND -1))"
 
 leftovers=(${@})
-FIN_PERSONS=${leftovers[0]}
-FIN_HOMES=${leftovers[1]}
-SEED=${leftovers[2]}
-SCALING=${leftovers[3]}
-OUT_PATH=${leftovers[4]}
+persons=${leftovers[0]}
+homes=${leftovers[1]}
+out_path=${leftovers[2]%/}
 
 ##############################################################################
 # Input checks                                                               #
 ##############################################################################
-if [ ! -d "${OUT_PATH}" ]; then
+if [ ! -f "${persons}" ]; then
+    echo -e "Give a ${BOLD}valid${NORM} persons file path\n"; show_usage; exit 1
+fi
+if [ ! -f "${homes}" ]; then
+    echo -e "Give a ${BOLD}valid${NORM} homes file path\n"; show_usage; exit 1
+fi
+
+if [ ! -d "${out_path}" ]; then
      echo -e "Give a ${BOLD}valid${NORM} output directory\n"; show_usage; exit 1
 fi
 
 ##############################################################################
 # Execution                                                                  #
 ##############################################################################
-papermill /srv/app/src/generate-parcels.ipynb /dev/null \
-    -pfin_persons ${FIN_PERSONS} \
-    -pfin_homes ${FIN_HOMES} \
-    -pseed ${SEED} \
-    -pscaling ${SCALING} \
+papermill ${curdir}/generate-parcels.ipynb /dev/null \
+    -pfin_persons ${persons} \
+    -pfin_homes ${homes} \
+    -pseed ${SEED:-1234} \
+    -pscaling ${SCALING:-0.1} \
     -poutput_path ${OUT_PATH}
