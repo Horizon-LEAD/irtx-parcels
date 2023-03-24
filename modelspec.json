@@ -37,56 +37,6 @@
             }
         },
         {
-            "name": "Random Seed",
-            "variableName": "SEED",
-            "description": "Random seed to use",
-            "isOutput": false,
-            "isOutputDir": false,
-            "isOptional": false,
-            "inputType": "CLI",
-            "chartType": "NONE",
-            "modelDataType": {
-                "name": "number",
-                "description": "",
-                "dataType": "number",
-                "extension": null,
-                "validators": [
-                    {
-                        "name": "required",
-                        "description": "required",
-                        "validatorType": "required",
-                        "value": ""
-                    }
-                ],
-                "objectKeys": []
-            }
-        },
-        {
-            "name": "Demand scaling factor",
-            "variableName": "SCALING",
-            "description": "Allows to uniformly scale up or down the total parcel demand",
-            "isOutput": false,
-            "isOutputDir": false,
-            "isOptional": false,
-            "inputType": "CLI",
-            "chartType": "NONE",
-            "modelDataType": {
-                "name": "number",
-                "description": "",
-                "dataType": "number",
-                "extension": null,
-                "validators": [
-                    {
-                        "name": "required",
-                        "description": "required",
-                        "validatorType": "required",
-                        "value": ""
-                    }
-                ],
-                "objectKeys": []
-            }
-        },
-        {
             "name": "Output directory",
             "variableName": "output_path",
             "description": "Path to the directory that will contain the model output (must exist)",
@@ -112,13 +62,62 @@
             }
         },
         {
+            "name": "Random Seed",
+            "variableName": "SEED",
+            "description": "Random seed to use",
+            "isOutput": false,
+            "isOutputDir": false,
+            "isOptional": true,
+            "inputType": "ENV",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "number",
+                "description": "",
+                "dataType": "number",
+                "extension": null,
+                "validators": [
+                    {
+                        "name": "required",
+                        "description": "required",
+                        "validatorType": "required",
+                        "value": ""
+                    }
+                ],
+                "objectKeys": []
+            }
+        },
+        {
+            "name": "Demand scaling factor",
+            "variableName": "SCALING",
+            "description": "Allows to uniformly scale up or down the total parcel demand",
+            "isOutput": false,
+            "isOutputDir": false,
+            "isOptional": true,
+            "inputType": "ENV",
+            "chartType": "NONE",
+            "modelDataType": {
+                "name": "number",
+                "description": "",
+                "dataType": "number",
+                "extension": null,
+                "validators": [
+                    {
+                        "name": "required",
+                        "description": "required",
+                        "validatorType": "required",
+                        "value": ""
+                    }
+                ],
+                "objectKeys": []
+            }
+        },
+        {
             "name": "Parcels",
             "variableName": "parcels",
             "description": "file for the output parcels",
             "isOutput": true,
             "isOutputDir": false,
             "isOptional": false,
-            "inputType": "CLI",
             "chartType": "NONE",
             "modelDataType": {
                 "name": "file",
